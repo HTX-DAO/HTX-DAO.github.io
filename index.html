@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HTX DAO — Complete Guide: Governance, HTX Token, Voting &amp; DAO Treasury (2026)</title>
+  <meta name="description" content="Complete HTX DAO guide (2026): what HTX DAO is, how HTX token holders participate in governance, how DAO proposals and voting work, HTX DAO treasury management, ecosystem grants, comparison with other exchange DAOs, and a deep FAQ covering everything about HTX DAO.">
+  <meta name="keywords" content="HTX DAO, HTX DAO governance, HTX token DAO, HTX DAO voting, HTX DAO treasury, Huobi DAO, HTX DAO ecosystem, HTX DAO proposals">
+  <meta name="author" content="Crypto Finance Experts">
+  <link rel="canonical" href="https://htxdao-guide.example.com/">
+  <link rel="icon" type="image/png" href="htx.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://htxdao-guide.example.com/">
+  <meta property="og:title" content="HTX DAO — Governance, HTX Token &amp; DAO Treasury Guide (2026)">
+  <meta property="og:description" content="Everything about HTX DAO: governance participation, HTX token voting power, DAO proposals, treasury management, and ecosystem grants.">
+  <meta property="og:image" content="cover.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HTX DAO Guide (2026)">
+  <meta name="twitter:description" content="How HTX DAO governance works, HTX token voting, DAO treasury, and ecosystem grants for 2026.">
+
+  <style>
+    :root {
+      --b:    #1E80FF;
+      --b2:   #1568D4;
+      --b3:   #0F52AA;
+      --ba:   #5AAEFF;
+      --bb:   #A8D4FF;
+
+      /* gold accent — HTX brand */
+      --g:    #F0B90B;
+      --g2:   #CC9C00;
+      --ga:   #F5CC40;
+      --gb:   #FCE89A;
+
+      --ink:   #F0F6FF;
+      --sub:   #A8D4FF;
+      --muted: #94A3B8;
+      --dim:   #64748B;
+
+      --bg:    #020912;
+      --card:  rgba(255,255,255,.028);
+      --line:  rgba(255,255,255,.07);
+      --lb:    rgba(30,128,255,.15);
+      --lg:    rgba(240,185,11,.12);
+
+      --ok:   #34D399;
+      --warn: #FBBF24;
+      --err:  #F87171;
+
+      --r:  12px;
+      --rl: 20px;
+      --gap: 1.2rem;
+      --sh: 0 8px 32px rgba(0,0,0,.68);
+      --shb: 0 4px 28px rgba(30,128,255,.16);
+      --shg: 0 4px 22px rgba(240,185,11,.14);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 1000px 560px at 0%   0%,  rgba(21,104,212,.12), transparent 55%),
+        radial-gradient(ellipse  720px 440px at 100% 8%,  rgba(240,185,11,.05), transparent 50%),
+        radial-gradient(ellipse  640px 400px at 50%  97%, rgba(15,82,170,.08),  transparent 55%);
+      color: var(--muted);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: var(--ba); text-decoration: none }
+    a:hover { text-decoration: underline }
+    img { max-width: 100%; height: auto; display: block }
+    strong { color: #CCE5FF; font-weight: 600 }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem }
+
+    h1,h2,h3,h4 { color: var(--ink); line-height: 1.25 }
+    h1 { font-size: clamp(2.3rem,5.5vw,3.6rem); font-weight: 900; letter-spacing: -.6px }
+    h2 { font-size: clamp(1.3rem,2.5vw,1.8rem); font-weight: 700; margin-top: 1.8rem; padding-top: .75rem; border-top: 1px solid var(--line) }
+    h3 { font-size: 1.08rem; font-weight: 700; color: var(--sub) }
+    p,li { font-size: 1rem; line-height: 1.78 }
+    td,th { font-size: .97rem; line-height: 1.6 }
+    .lead { font-size: 1.1rem; color: #88CAFF; line-height: 1.70 }
+
+    /* ── HERO ── */
+    header.hero {
+      padding: clamp(3rem,7vw,6rem) 0 clamp(2rem,4vw,3.5rem);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-card {
+      background: rgba(21,104,212,.055);
+      border: 1px solid var(--lb);
+      border-radius: var(--rl);
+      padding: clamp(1.8rem,4vw,3rem);
+      box-shadow: var(--sh), var(--shb);
+      position: relative; overflow: hidden;
+    }
+    /* blue-gold dual shimmer */
+    .hero-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg,
+        transparent 3%,
+        rgba(90,174,255,.55) 22%,
+        rgba(30,128,255,.90) 40%,
+        rgba(240,185,11,.75) 60%,
+        rgba(245,204,64,.55) 78%,
+        transparent 97%
+      );
+    }
+
+    .brand-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.1rem }
+    .brand-logo {
+      width: 62px; height: 62px; border-radius: 16px;
+      border: 1px solid rgba(30,128,255,.32);
+      background: rgba(21,104,212,.14);
+      padding: .3rem; object-fit: contain;
+      box-shadow: 0 4px 20px rgba(30,128,255,.24);
+      flex: 0 0 auto;
+    }
+    .brand-label { color: var(--dim); font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .6px }
+    .brand-sub   { color: var(--muted); font-size: .86rem; margin-top: .15rem }
+
+    /* keyword tag */
+    .kw-tag {
+      display: inline-block;
+      background: rgba(30,128,255,.15);
+      border: 1px solid rgba(30,128,255,.30);
+      color: var(--ba);
+      padding: .3rem .85rem;
+      border-radius: 999px;
+      font-size: .82rem; font-weight: 700;
+      letter-spacing: .3px;
+      margin-bottom: .8rem;
+    }
+
+    /* ── BIG CTA ── */
+    .cta-hero {
+      display: flex; flex-direction: column; align-items: center;
+      gap: .85rem; margin-top: 2.8rem;
+    }
+    .cta-big {
+      display: inline-flex; align-items: center; justify-content: center; gap: .8rem;
+      background: linear-gradient(135deg, #5AAEFF 0%, #1E80FF 38%, #1568D4 72%, #0F52AA 100%);
+      color: #fff;
+      padding: 1.4rem 4rem;
+      border-radius: 18px;
+      font-weight: 900; font-size: 1.28rem; letter-spacing: .2px;
+      box-shadow:
+        0 0 0 1px rgba(30,128,255,.32),
+        0 0 48px rgba(30,128,255,.46),
+        0 10px 32px rgba(21,104,212,.36),
+        0 28px 64px rgba(15,82,170,.30);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: transform .2s, box-shadow .2s, filter .2s;
+      width: 100%; max-width: 480px;
+      text-align: center;
+    }
+    .cta-big:hover {
+      transform: translateY(-4px) scale(1.022); filter: brightness(1.09);
+      color: #fff; text-decoration: none;
+      box-shadow:
+        0 0 0 1px rgba(30,128,255,.50),
+        0 0 72px rgba(30,128,255,.60),
+        0 14px 44px rgba(21,104,212,.48),
+        0 36px 72px rgba(15,82,170,.38);
+    }
+    .cta-sub {
+      font-size: .88rem; color: var(--dim);
+      text-align: center;
+    }
+
+    /* ── NOTE ── */
+    .note {
+      border-left: 3px solid var(--ba);
+      padding: .9rem 1.1rem;
+      background: rgba(21,104,212,.07);
+      border-radius: 0 10px 10px 0;
+      color: var(--sub); margin-top: 1rem;
+    }
+    .note.gold {
+      border-left-color: var(--ga);
+      background: rgba(204,156,0,.07);
+      color: var(--gb);
+    }
+
+    /* ── STEPS ── */
+    section.step-guide {
+      padding: clamp(2rem,5vw,3.5rem) 0;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .steps { display: grid; gap: var(--gap); grid-template-columns: 1fr }
+    .step {
+      background: var(--card); border: 1px solid var(--line);
+      border-top: 2px solid rgba(30,128,255,.30); border-radius: var(--r);
+      padding: 1.3rem; box-shadow: var(--sh); transition: transform .18s, box-shadow .18s;
+    }
+    .step:hover { transform: translateY(-3px); box-shadow: var(--sh), var(--shb) }
+    .step .icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      display: inline-grid; place-items: center;
+      background: rgba(21,104,212,.12); margin-bottom: .7rem;
+      font-weight: 900; font-size: .9rem; color: var(--ba);
+      border: 1px solid rgba(30,128,255,.24);
+    }
+
+    /* ── CARD ── */
+    main { padding-top: .5rem }
+    main .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1.6rem; margin: 1.2rem 0; box-shadow: var(--sh);
+    }
+    main .card > h2:first-child { margin-top: 0; border-top: none; padding-top: 0 }
+
+    /* ── TOC ── */
+    .toc { border: 1px solid var(--lb); background: rgba(21,104,212,.05); border-radius: var(--r); padding: 1.2rem 1.4rem }
+    .toc strong { color: var(--ink) }
+    .toc ul { margin: .55rem 0 0; padding-left: 1.1rem }
+    .toc li { margin: .3rem 0; font-size: .97rem }
+    .toc a { font-weight: 600 }
+
+    /* ── CALLOUT GRID ── */
+    .callout-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; margin-top: .9rem }
+    .mini { background: rgba(255,255,255,.02); border: 1px solid var(--line); border-radius: var(--r); padding: 1.1rem }
+    .mini h3 { margin-bottom: .38rem }
+    .kpi-badges { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .6rem }
+    .kpi-badges span {
+      border: 1px solid rgba(30,128,255,.24); background: rgba(21,104,212,.09);
+      color: var(--sub); padding: .28rem .58rem;
+      border-radius: 999px; font-size: .86rem; font-weight: 600;
+    }
+    .kpi-badges span.gold {
+      border-color: rgba(240,185,11,.28); background: rgba(204,156,0,.09);
+      color: var(--ga);
+    }
+
+    /* ── GOVERNANCE VOTING CARDS — unique element ── */
+    .vote-grid {
+      display: grid; grid-template-columns: 1fr; gap: var(--gap); margin-top: 1rem;
+    }
+    .vote-card {
+      border-radius: var(--r); border: 1px solid var(--line);
+      overflow: hidden; transition: transform .18s, box-shadow .18s;
+    }
+    .vote-card:hover { transform: translateY(-3px); box-shadow: var(--shb) }
+    .vc-header {
+      padding: .75rem 1.15rem;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: .7rem;
+    }
+    .vc-title { font-weight: 800; font-size: .95rem; color: var(--ink); line-height: 1.3 }
+    .vc-id { font-size: .72rem; color: var(--dim); margin-top: .12rem }
+    .vc-badge {
+      padding: .22rem .65rem; border-radius: 999px;
+      font-size: .75rem; font-weight: 800;
+      white-space: nowrap; flex: 0 0 auto;
+    }
+    .badge-active  { background: rgba(52,211,153,.14); color: #34D399 }
+    .badge-passed  { background: rgba(30,128,255,.14);  color: var(--ba) }
+    .badge-pending { background: rgba(240,185,11,.14);  color: var(--ga) }
+    .vc-body { padding: .7rem 1.15rem; font-size: .87rem; color: var(--muted) }
+    .vc-bars { padding: .65rem 1.15rem }
+    .vc-vote-row { display: flex; align-items: center; gap: .6rem; margin-bottom: .35rem }
+    .vc-vote-label { min-width: 42px; font-size: .78rem; font-weight: 700 }
+    .vc-vote-label.for  { color: var(--ok) }
+    .vc-vote-label.against { color: var(--err) }
+    .vc-vote-track { flex: 1; height: 7px; background: rgba(255,255,255,.07); border-radius: 999px; overflow: hidden }
+    .vc-vote-fill { height: 100%; border-radius: 999px }
+    .fill-for  { background: linear-gradient(90deg, #34D399, #10B981) }
+    .fill-against { background: linear-gradient(90deg, #F87171, #EF4444) }
+    .vc-vote-pct { font-size: .78rem; font-weight: 700; min-width: 38px; text-align: right }
+    .vc-footer {
+      padding: .5rem 1.15rem;
+      background: rgba(255,255,255,.016);
+      border-top: 1px solid rgba(255,255,255,.04);
+      font-size: .76rem; color: var(--dim);
+      display: flex; flex-wrap: wrap; gap: .65rem;
+    }
+
+    /* proposal types */
+    .vote-card.type-treasury { background: rgba(240,185,11,.04); border-color: rgba(240,185,11,.14) }
+    .vote-card.type-param    { background: rgba(30,128,255,.04); border-color: rgba(30,128,255,.14) }
+    .vote-card.type-grant    { background: rgba(52,211,153,.04); border-color: rgba(52,211,153,.12) }
+
+    /* ── TOKO BARS ── */
+    .toko-bar { display: flex; flex-direction: column; gap: .65rem; margin-top: 1rem }
+    .toko-row { display: flex; align-items: center; gap: .85rem }
+    .toko-label { min-width: 210px; font-size: .92rem; color: #CCE5FF; font-weight: 600 }
+    .toko-track { flex: 1; height: 8px; background: rgba(255,255,255,.07); border-radius: 999px; overflow: hidden }
+    .toko-fill  { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--ba), var(--b)) }
+    .toko-fill.gold { background: linear-gradient(90deg, var(--ga), var(--g)) }
+    .toko-val   { min-width: 58px; text-align: right; font-size: .9rem; font-weight: 700; color: var(--ba) }
+    .toko-val.gold { color: var(--ga) }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--line) }
+    table { width: 100%; border-collapse: collapse; min-width: 500px }
+    th,td { padding: .82rem 1rem; border-bottom: 1px solid var(--line); text-align: left }
+    th { background: rgba(21,104,212,.07); color: var(--ink); font-weight: 700; font-size: .93rem }
+    tr.hi { background: rgba(21,104,212,.04) }
+    tr:hover td { background: rgba(255,255,255,.018) }
+    tr:last-child td { border-bottom: none }
+    .ok  { color: var(--ok) }
+    .warn{ color: var(--warn) }
+    .err { color: var(--err) }
+
+    /* ── EEAT ── */
+    .eeat { background: var(--card); border: 1px solid var(--lb); border-radius: var(--r); padding: 1.6rem; box-shadow: var(--sh) }
+    .eeat > h2:first-child { margin-top: 0; border-top: none; padding-top: 0 }
+
+    /* ── FAQ ── */
+    .faq-item { border-bottom: 1px solid var(--line); padding: .95rem 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-button { all: unset; display: flex; justify-content: space-between; align-items: flex-start; width: 100%; cursor: pointer; gap: 1rem }
+    .faq-button:focus-visible { outline: 2px solid var(--b); border-radius: 4px }
+    .faq-button h3 { margin: 0; font-weight: 700; font-size: 1rem; line-height: 1.4 }
+    .faq-content { max-height: 0; overflow: hidden; transition: max-height .28s ease }
+    .faq-content.open { padding-top: .7rem }
+    .faq-plus { font-weight: 800; font-size: 1.4rem; color: var(--ba); flex: 0 0 auto; line-height: 1; transition: transform .2s }
+    .faq-button[aria-expanded="true"] .faq-plus { transform: rotate(45deg) }
+
+    /* ── SECOND CTA BLOCK ── */
+    .cta-section {
+      margin: 2.5rem 0;
+      padding: 2.5rem 1.5rem;
+      background: rgba(21,104,212,.06);
+      border: 1px solid var(--lb);
+      border-radius: var(--rl);
+      text-align: center;
+      box-shadow: var(--shb);
+    }
+    .cta-section h2 { border-top: none; padding-top: 0; margin-top: 0 }
+
+    @media(min-width:860px){
+      .steps { grid-template-columns: repeat(4,1fr) }
+      .callout-grid { grid-template-columns: 1fr 1fr }
+      .vote-grid { grid-template-columns: 1fr 1fr }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="container">
+    <div class="hero-card">
+      <div class="brand-row">
+        <img class="brand-logo" src="htx.png" alt="HTX DAO logo">
+        <div>
+          <div class="brand-label">Decentralised Autonomous Organisation</div>
+          <div class="brand-sub">HTX Ecosystem · Community Governance · DAO Treasury · Ecosystem Grants</div>
+        </div>
+      </div>
+
+      <div class="kw-tag">🏛️ HTX DAO</div>
+
+      <h1>HTX DAO</h1>
+      <p class="lead" style="margin-top:.85rem">
+        The complete guide to <strong>HTX DAO</strong> — the decentralised
+        autonomous organisation governing the <strong>HTX ecosystem</strong>
+        (formerly Huobi). HTX DAO puts governance power in the hands of
+        <strong>HTX token holders</strong>, enabling the community to
+        vote on protocol parameters, treasury allocation, ecosystem grants,
+        strategic partnerships, and the long-term direction of one of
+        crypto's largest exchange ecosystems.
+        Understand how <strong>HTX DAO voting</strong> works,
+        what the <strong>HTX DAO treasury</strong> funds,
+        how to participate in <strong>HTX DAO governance proposals</strong>,
+        and why HTX DAO represents a pivotal step toward
+        <strong>community-owned exchange infrastructure</strong>
+        in 2026.
+      </p>
+
+      <!-- BIG CTA -->
+      <div class="cta-hero">
+        <a href="#" class="cta-big" aria-label="Join HTX DAO — Participate in Governance">
+          <span>🏛️</span> Join HTX DAO
+        </a>
+        <p class="cta-sub">Participate in HTX DAO governance · Vote on proposals · Earn DAO rewards</p>
+      </div>
+
+      <div class="note gold" style="margin-top:2rem">
+        <strong>HTX DAO is the governance backbone of the HTX ecosystem:</strong>
+        HTX DAO decisions affect fee structures, listing policies, ecosystem fund allocation,
+        and the strategic direction of HTX's entire product suite — including
+        the HTX exchange, HTX Chain, and affiliated DeFi protocols.
+        Holding and staking HTX tokens is your direct voice in shaping
+        one of the world's largest crypto ecosystems.
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STEPS -->
+<section class="step-guide" aria-labelledby="how-works">
+  <div class="container">
+    <h2 id="how-works" style="margin-top:0;border-top:none;padding-top:0">
+      How to Participate in HTX DAO: Hold → Stake → Vote → Earn
+    </h2>
+    <div class="steps" role="list">
+      <article class="step" role="listitem">
+        <div class="icon">01</div>
+        <h3>Hold HTX tokens</h3>
+        <p>HTX token is the governance asset of HTX DAO. Acquire HTX tokens on HTX Exchange or supported DEXs. The more HTX you hold and stake, the greater your voting power and reward share within HTX DAO governance.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">02</div>
+        <h3>Stake for governance weight</h3>
+        <p>Stake your HTX tokens in the official HTX DAO staking module to activate governance rights. Staked HTX earns voting power proportional to stake size and duration. Longer staking commitments earn multiplied governance weight in HTX DAO.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">03</div>
+        <h3>Vote on HTX DAO proposals</h3>
+        <p>Browse active proposals in the HTX DAO governance portal. Vote For, Against, or Abstain on ecosystem decisions — treasury grants, protocol parameters, new chain integrations, and strategic partnerships. Each vote is recorded on-chain transparently.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">04</div>
+        <h3>Earn DAO participation rewards</h3>
+        <p>Active HTX DAO participants earn rewards from the DAO's incentive programme — distributed from the HTX DAO treasury to community members who engage in governance, submit proposals, and contribute to ecosystem growth. Participation is incentivised, not just permitted.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="container" role="main">
+
+  <!-- TOC -->
+  <section class="card toc" aria-label="Table of Contents">
+    <strong>On this page — HTX DAO:</strong>
+    <ul>
+      <li><a href="#overview">What is HTX DAO and why it matters for the HTX ecosystem</a></li>
+      <li><a href="#governance">HTX DAO governance: how proposals and voting work</a></li>
+      <li><a href="#voting-cards">HTX DAO proposal types: treasury, parameter, and grant votes</a></li>
+      <li><a href="#treasury">HTX DAO treasury: size, management, and allocation principles</a></li>
+      <li><a href="#grants">HTX DAO ecosystem grants: how to apply and what gets funded</a></li>
+      <li><a href="#htx-token">HTX token: governance utility, staking, and tokenomics</a></li>
+      <li><a href="#chain">HTX Chain and its relationship to HTX DAO</a></li>
+      <li><a href="#comparison">HTX DAO vs BNB DAO vs UNI governance vs AAVE governance</a></li>
+      <li><a href="#best-practices">Best practices for HTX DAO participants</a></li>
+      <li><a href="#eeat">Authoritative sources &amp; references</a></li>
+      <li><a href="#faq">HTX DAO — Frequently Asked Questions</a></li>
+    </ul>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="card" id="overview">
+    <h2>What Is HTX DAO and Why It Matters for the HTX Ecosystem</h2>
+    <p>
+      <strong>HTX DAO</strong> is the decentralised autonomous organisation
+      established by the HTX ecosystem — transforming one of the world's
+      largest crypto exchanges from a centralised entity into a
+      <strong>community-governed protocol</strong>. The DAO structure gives
+      HTX token holders direct decision-making power over key ecosystem parameters,
+      treasury deployment, and strategic direction.
+    </p>
+    <p>
+      The transition toward HTX DAO governance represents a broader trend
+      in crypto: major exchanges and protocols recognising that
+      <strong>decentralised governance creates stronger communities</strong>,
+      more resilient protocols, and better alignment between
+      platform success and token holder interests.
+      For HTX, the DAO structure means decisions that once resided entirely
+      with the company now require community consensus — making HTX DAO
+      participation directly impactful on the ecosystem's evolution.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>For HTX token holders</h3>
+        <p style="color:var(--muted)">HTX DAO transforms your token from a passive asset into an active governance instrument. Every HTX token is a vote in ecosystem decisions — from fee structures to grant approvals to new chain integrations. Staking HTX amplifies your voting weight and earns participation rewards from the DAO treasury.</p>
+        <div class="kpi-badges"><span>Direct voting power</span><span>Staking rewards</span><span>Proposal rights</span></div>
+      </div>
+      <div class="mini">
+        <h3>For ecosystem builders</h3>
+        <p style="color:var(--muted)">HTX DAO's grant programme funds projects building on HTX Chain and within the broader HTX ecosystem. Builders can submit grant proposals to the DAO treasury for development funding, liquidity incentives, and marketing support — all decided by community vote rather than centralised gatekeepers.</p>
+        <div class="kpi-badges"><span class="gold">Ecosystem grants</span><span class="gold">Liquidity incentives</span><span class="gold">Community-voted</span></div>
+      </div>
+      <div class="mini">
+        <h3>For DeFi participants</h3>
+        <p style="color:var(--muted)">HTX DAO governs parameters across the HTX DeFi ecosystem — including HTX Chain's native DeFi protocols, lending parameters, and cross-chain bridge configurations. Active HTX DAO governance is how these parameters evolve to match market conditions without centralised intervention.</p>
+        <div class="kpi-badges"><span>DeFi parameter control</span><span>Bridge governance</span><span>Chain parameters</span></div>
+      </div>
+      <div class="mini">
+        <h3>For the broader crypto community</h3>
+        <p style="color:var(--muted)">HTX DAO's governance model is one of the largest exchange-affiliated DAO experiments in crypto. How HTX DAO manages a major exchange ecosystem — balancing commercial needs with community governance — is being watched as a model for other major exchanges considering decentralisation.</p>
+        <div class="kpi-badges"><span>Exchange DAO pioneer</span><span>Governance case study</span><span>Community ownership</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE -->
+  <section class="card" id="governance">
+    <h2>HTX DAO Governance: How Proposals and Voting Work</h2>
+    <p>
+      HTX DAO governance follows a structured process — from proposal submission
+      to community discussion to on-chain voting to implementation.
+      Understanding this process is essential for effective participation.
+    </p>
+
+    <div class="table-wrap">
+      <table aria-label="HTX DAO governance process">
+        <thead>
+          <tr><th>Stage</th><th>What happens</th><th>Duration</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td><strong>1. Idea &amp; discussion</strong></td>
+            <td>Community member posts proposal idea in HTX DAO forum (Snapshot or dedicated governance portal) for community feedback and refinement. Not yet a formal proposal.</td>
+            <td>Flexible — typically 3–7 days of discussion</td>
+          </tr>
+          <tr>
+            <td><strong>2. Formal proposal submission</strong></td>
+            <td>HTX token holder with sufficient governance weight submits the proposal formally, including specification, budget (if applicable), timeline, and success metrics. Proposal becomes eligible for voting.</td>
+            <td>Submission window open continuously</td>
+          </tr>
+          <tr class="hi">
+            <td><strong>3. Voting period</strong></td>
+            <td>HTX DAO members cast votes (For / Against / Abstain) weighted by their staked HTX balance. Voting is on-chain or via Snapshot (off-chain signature) depending on proposal type.</td>
+            <td>Typically 5–7 days</td>
+          </tr>
+          <tr>
+            <td><strong>4. Quorum &amp; threshold check</strong></td>
+            <td>For a proposal to pass, voting must reach the minimum quorum (sufficient participation) and the passing threshold (sufficient For votes). Both requirements must be met simultaneously.</td>
+            <td>Assessed at close of voting period</td>
+          </tr>
+          <tr class="hi">
+            <td><strong>5. Implementation</strong></td>
+            <td>Passed proposals are implemented by the HTX DAO multisig or technical committee — on-chain execution for smart-contract changes, operational execution for ecosystem changes.</td>
+            <td>Varies — days to weeks depending on complexity</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Voting power = staked HTX, not just held HTX:</strong>
+      In most HTX DAO governance implementations, voting power derives from
+      staked HTX (not just held tokens). This design rewards committed community members
+      over casual holders, aligning governance influence with
+      long-term ecosystem participation.
+      Check the current governance specification in the official HTX DAO portal
+      for the exact staking-to-voting-power formula in effect.
+    </div>
+  </section>
+
+  <!-- VOTING CARDS -->
+  <section class="card" id="voting-cards">
+    <h2>HTX DAO Proposal Types: Treasury, Parameter, and Grant Votes</h2>
+    <p>
+      HTX DAO handles multiple categories of governance decisions.
+      Below are illustrative examples of the types of proposals
+      that typically flow through HTX DAO governance.
+    </p>
+
+    <!-- Governance Voting Cards — unique design element -->
+    <div class="vote-grid" role="list" aria-label="HTX DAO governance proposal examples">
+
+      <div class="vote-card type-treasury" role="listitem">
+        <div class="vc-header">
+          <div>
+            <div class="vc-title">HTX DAO Treasury Q3 Liquidity Programme Allocation</div>
+            <div class="vc-id">HIP-42 · Treasury Proposal</div>
+          </div>
+          <div class="vc-badge badge-passed">Passed</div>
+        </div>
+        <div class="vc-body">Allocate 5,000,000 HTX from DAO treasury to liquidity incentives for HTX Chain DeFi protocols across Q3 — distributed to qualifying LP positions on HTX Chain DEXs.</div>
+        <div class="vc-bars">
+          <div class="vc-vote-row">
+            <span class="vc-vote-label for">For</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-for" style="width:78%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--ok)">78.3%</span>
+          </div>
+          <div class="vc-vote-row">
+            <span class="vc-vote-label against">Against</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-against" style="width:21.7%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--err)">21.7%</span>
+          </div>
+        </div>
+        <div class="vc-footer">
+          <span>Participation: 62.4% of staked HTX</span>
+          <span>Quorum: ✓ Met</span>
+          <span>Treasury impact: −5M HTX</span>
+        </div>
+      </div>
+
+      <div class="vote-card type-param" role="listitem">
+        <div class="vc-header">
+          <div>
+            <div class="vc-title">Reduce HTX Exchange Maker Fee for High-Volume Traders</div>
+            <div class="vc-id">HIP-38 · Parameter Change</div>
+          </div>
+          <div class="vc-badge badge-active">Active</div>
+        </div>
+        <div class="vc-body">Reduce maker fee for Tier 5+ traders (≥$50M monthly volume) from 0.020% to 0.015% to improve competitiveness vs Binance and OKX for institutional market makers.</div>
+        <div class="vc-bars">
+          <div class="vc-vote-row">
+            <span class="vc-vote-label for">For</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-for" style="width:65%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--ok)">65.1%</span>
+          </div>
+          <div class="vc-vote-row">
+            <span class="vc-vote-label against">Against</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-against" style="width:35%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--err)">34.9%</span>
+          </div>
+        </div>
+        <div class="vc-footer">
+          <span>2 days remaining</span>
+          <span>Participation: 44.8% of staked HTX</span>
+          <span>Quorum: pending</span>
+        </div>
+      </div>
+
+      <div class="vote-card type-grant" role="listitem">
+        <div class="vc-header">
+          <div>
+            <div class="vc-title">Ecosystem Grant: Cross-Chain Bridge Integration with HTX Chain</div>
+            <div class="vc-id">HIP-45 · Ecosystem Grant</div>
+          </div>
+          <div class="vc-badge badge-passed">Passed</div>
+        </div>
+        <div class="vc-body">Grant 500,000 USDT from HTX DAO treasury to fund development and audit of a native cross-chain bridge connecting HTX Chain to Arbitrum — expanding the chain's DeFi accessibility.</div>
+        <div class="vc-bars">
+          <div class="vc-vote-row">
+            <span class="vc-vote-label for">For</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-for" style="width:88%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--ok)">88.2%</span>
+          </div>
+          <div class="vc-vote-row">
+            <span class="vc-vote-label against">Against</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-against" style="width:12%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--err)">11.8%</span>
+          </div>
+        </div>
+        <div class="vc-footer">
+          <span>Participation: 71.2% of staked HTX</span>
+          <span>Quorum: ✓ Met</span>
+          <span>Grant: $500,000 USDT</span>
+        </div>
+      </div>
+
+      <div class="vote-card type-param" role="listitem">
+        <div class="vc-header">
+          <div>
+            <div class="vc-title">HTX DAO: Increase Quorum Requirement from 40% to 50%</div>
+            <div class="vc-id">HIP-41 · Governance Meta</div>
+          </div>
+          <div class="vc-badge badge-pending">Pending</div>
+        </div>
+        <div class="vc-body">Raise the quorum threshold for major treasury proposals from 40% to 50% of staked HTX — increasing legitimacy of high-impact decisions while maintaining agility for routine governance.</div>
+        <div class="vc-bars">
+          <div class="vc-vote-row">
+            <span class="vc-vote-label for">For</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-for" style="width:0%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--dim)">—</span>
+          </div>
+          <div class="vc-vote-row">
+            <span class="vc-vote-label against">Against</span>
+            <div class="vc-vote-track"><div class="vc-vote-fill fill-against" style="width:0%"></div></div>
+            <span class="vc-vote-pct" style="color:var(--dim)">—</span>
+          </div>
+        </div>
+        <div class="vc-footer">
+          <span>Voting opens in 48h</span>
+          <span>Discussion period active</span>
+          <span>Governance meta proposal</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note" style="margin-top:1.2rem">
+      <strong>These are illustrative examples:</strong>
+      The proposals above demonstrate the types of decisions governed by HTX DAO —
+      treasury allocation, protocol parameter changes, ecosystem grants, and
+      governance process improvements. For live active proposals,
+      visit the official HTX DAO governance portal.
+    </div>
+  </section>
+
+  <!-- TREASURY -->
+  <section class="card" id="treasury">
+    <h2>HTX DAO Treasury: Management, Size, and Allocation Principles</h2>
+    <p>
+      The <strong>HTX DAO treasury</strong> is the financial backbone of the DAO —
+      a community-controlled fund used to incentivise ecosystem growth,
+      fund grants, run liquidity programmes, and sustain DAO operations.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>Treasury funding sources</h3>
+        <p style="color:var(--muted)">The HTX DAO treasury is funded through multiple streams: a portion of HTX Exchange trading fees directed to the DAO, HTX token buybacks, ecosystem partnerships, and initial treasury allocation at DAO launch. This multi-stream funding model makes the treasury less dependent on any single revenue source and aligns treasury growth with exchange volume.</p>
+        <div class="kpi-badges"><span class="gold">Exchange fee allocation</span><span class="gold">Token buybacks</span><span class="gold">Initial allocation</span></div>
+      </div>
+      <div class="mini">
+        <h3>Treasury allocation categories</h3>
+        <p style="color:var(--muted)">HTX DAO treasury funds are deployed across four primary categories: ecosystem grants for builders on HTX Chain, liquidity incentives for DeFi protocols, community education and growth initiatives, and operational costs (audits, legal, technical infrastructure). Major allocations require HTX DAO governance votes; routine operational costs are managed by the technical committee within pre-approved budgets.</p>
+        <div class="kpi-badges"><span>Ecosystem grants</span><span>Liquidity incentives</span><span>Community growth</span><span>Operations</span></div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1rem">
+      <table aria-label="HTX DAO treasury allocation framework">
+        <thead>
+          <tr><th>Category</th><th>Typical allocation</th><th>Governance required</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Ecosystem grants</td>
+            <td>30–40% of annual budget — funding builders on HTX Chain and ecosystem tools</td>
+            <td class="ok">Yes — DAO vote per grant above threshold</td>
+          </tr>
+          <tr>
+            <td>Liquidity incentives</td>
+            <td>25–35% — DeFi protocol liquidity mining, LP rewards, market depth</td>
+            <td class="ok">Yes — quarterly programme votes</td>
+          </tr>
+          <tr class="hi">
+            <td>Community and growth</td>
+            <td>15–20% — ambassador programme, hackathons, education, events</td>
+            <td class="warn">Partial — operational committee manages within budget</td>
+          </tr>
+          <tr>
+            <td>DAO operations</td>
+            <td>10–15% — audits, legal, infrastructure, technical maintenance</td>
+            <td class="warn">Partial — pre-approved annual budget</td>
+          </tr>
+          <tr class="hi">
+            <td>Strategic reserve</td>
+            <td>10–15% — held for emergency use or large strategic opportunities</td>
+            <td class="ok">Yes — supermajority vote required for deployment</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- GRANTS -->
+  <section class="card" id="grants">
+    <h2>HTX DAO Ecosystem Grants: How to Apply and What Gets Funded</h2>
+    <p>
+      The <strong>HTX DAO grant programme</strong> is one of the most impactful
+      mechanisms for ecosystem growth — directing treasury resources to teams
+      building valuable products on HTX Chain and within the broader HTX ecosystem.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>What qualifies for HTX DAO grants</h3>
+        <p style="color:var(--muted)">HTX DAO grants typically fund: DeFi protocols launching on HTX Chain (DEXs, lending, derivatives), infrastructure tools (bridges, oracles, wallets, block explorers), developer tooling (SDKs, APIs, testing frameworks), community tools (analytics dashboards, portfolio trackers), and educational content programmes targeting HTX ecosystem onboarding.</p>
+        <div class="kpi-badges"><span>DeFi protocols</span><span>Infrastructure</span><span>Developer tools</span><span>Education</span></div>
+      </div>
+      <div class="mini">
+        <h3>How to apply for an HTX DAO grant</h3>
+        <p style="color:var(--muted)">Submit a grant proposal in the HTX DAO governance forum with: project description and team background, specific deliverables and milestones, requested amount and budget breakdown, timeline for completion, and measurable success metrics. The proposal enters community discussion before a formal DAO vote. Successful proposals are funded in tranches tied to milestone delivery.</p>
+        <div class="kpi-badges"><span>Forum submission</span><span>Community review</span><span>Milestone-based</span></div>
+      </div>
+    </div>
+
+    <div class="note gold">
+      <strong>Milestone-based funding protects DAO treasury:</strong>
+      HTX DAO grant funding is typically distributed in tranches
+      tied to verifiable project milestones — not as a single upfront payment.
+      This protects the treasury against projects that receive funding but
+      fail to deliver. Each tranche release may require a brief
+      progress confirmation from the funded team or a DAO committee review.
+    </div>
+  </section>
+
+  <!-- HTX TOKEN -->
+  <section class="card" id="htx-token">
+    <h2>HTX Token: Governance Utility, Staking, and Tokenomics</h2>
+    <p>
+      <strong>HTX</strong> (formerly HT — Huobi Token) is the native token
+      of the HTX ecosystem — rebranded alongside the exchange's transition
+      from Huobi to HTX. It serves as the primary governance instrument
+      of HTX DAO and carries multiple utility functions across the ecosystem.
+    </p>
+
+    <div class="table-wrap">
+      <table aria-label="HTX token utility">
+        <thead>
+          <tr><th>Function</th><th>How HTX is used</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>HTX DAO governance</td>
+            <td>Stake HTX to earn voting power in HTX DAO — vote on proposals, submit ideas, and shape ecosystem direction. The primary DAO utility of the token.</td>
+          </tr>
+          <tr>
+            <td>Exchange fee discount</td>
+            <td>Hold or stake HTX on HTX Exchange to reduce trading fees — a tiered discount system where higher HTX holdings unlock lower maker and taker fees.</td>
+          </tr>
+          <tr class="hi">
+            <td>DAO participation rewards</td>
+            <td>Active HTX DAO participants — voters, proposal submitters, community contributors — earn additional HTX distributions from the DAO's incentive budget.</td>
+          </tr>
+          <tr>
+            <td>HTX Chain gas &amp; staking</td>
+            <td>HTX tokens play a role in HTX Chain's economic model — used for gas payments and validator staking within the chain's proof-of-stake consensus.</td>
+          </tr>
+          <tr class="hi">
+            <td>Buyback &amp; burn</td>
+            <td>A portion of HTX Exchange revenue is used to buy back and burn HTX tokens — reducing circulating supply and creating deflationary pressure tied to exchange performance.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="toko-bar" role="list" aria-label="HTX token distribution (indicative)">
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Ecosystem &amp; DAO treasury</span>
+        <div class="toko-track"><div class="toko-fill" style="width:40%"></div></div>
+        <span class="toko-val">40%</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Community &amp; user rewards</span>
+        <div class="toko-track"><div class="toko-fill" style="width:30%"></div></div>
+        <span class="toko-val">30%</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Team &amp; advisors</span>
+        <div class="toko-track"><div class="toko-fill gold" style="width:20%"></div></div>
+        <span class="toko-val gold">20%</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Strategic reserve</span>
+        <div class="toko-track"><div class="toko-fill gold" style="width:10%"></div></div>
+        <span class="toko-val gold">10%</span>
+      </div>
+    </div>
+    <p style="font-size:.88rem; color:var(--dim); margin-top:.65rem">Indicative distribution — verify exact figures via official HTX documentation.</p>
+  </section>
+
+  <!-- HTX CHAIN -->
+  <section class="card" id="chain">
+    <h2>HTX Chain and Its Relationship to HTX DAO</h2>
+    <p>
+      <strong>HTX Chain</strong> is the EVM-compatible blockchain launched as the
+      technical foundation of the HTX ecosystem — and HTX DAO is its governance layer.
+      The relationship between the two is critical to understanding
+      how the HTX ecosystem operates at a systemic level.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>HTX Chain as the DAO's operating environment</h3>
+        <p style="color:var(--muted)">HTX DAO governance decisions that affect on-chain parameters — validator set updates, consensus changes, gas fee structures, and native DeFi protocol parameters — are executed directly on HTX Chain. The DAO effectively acts as the governance layer for the chain, making HTX Chain the first exchange-affiliated chain governed by a meaningful DAO structure.</p>
+        <div class="kpi-badges"><span>EVM compatible</span><span>DAO-governed chain</span><span>Validator governance</span></div>
+      </div>
+      <div class="mini">
+        <h3>HTX Chain DeFi ecosystem</h3>
+        <p style="color:var(--muted)">HTX Chain hosts a growing DeFi ecosystem — DEXs, lending protocols, yield farms, and cross-chain bridges — many of which receive liquidity incentives from HTX DAO treasury allocations. The DAO's grant programme is the primary mechanism for funding high-quality projects on the chain and driving TVL growth.</p>
+        <div class="kpi-badges"><span>Native DEXs</span><span>Lending protocols</span><span>DAO-funded liquidity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND CTA -->
+  <section class="cta-section" aria-label="HTX DAO call to action">
+    <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:.6rem">Ready to Participate in HTX DAO?</h2>
+    <p style="color:var(--muted);margin-bottom:1.8rem;max-width:560px;margin-left:auto;margin-right:auto">
+      Join thousands of HTX token holders shaping the future of one of crypto's largest ecosystems.
+      Stake HTX, vote on proposals, and earn DAO rewards.
+    </p>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem">
+      <a href="#" class="cta-big" aria-label="Join HTX DAO Now">
+        <span>🏛️</span> Join HTX DAO Now
+      </a>
+      <p class="cta-sub">Get HTX · Stake · Vote · Earn rewards</p>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="card" id="comparison">
+    <h2>HTX DAO vs BNB DAO vs UNI Governance vs AAVE Governance</h2>
+
+    <div class="table-wrap">
+      <table aria-label="DAO governance comparison">
+        <thead>
+          <tr><th>Feature</th><th>HTX DAO</th><th>BNB DAO</th><th>UNI Governance</th><th>AAVE Governance</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Governance token</td>
+            <td class="ok">HTX (exchange-native)</td>
+            <td class="ok">BNB (exchange-native)</td>
+            <td class="ok">UNI (protocol-native)</td>
+            <td class="ok">AAVE (protocol-native)</td>
+          </tr>
+          <tr>
+            <td>Treasury size</td>
+            <td class="warn">Growing — exchange-backed</td>
+            <td class="ok">Large — BNB ecosystem scale</td>
+            <td class="ok">Very large — $1B+ UNI treasury</td>
+            <td class="ok">Significant — protocol revenue</td>
+          </tr>
+          <tr class="hi">
+            <td>Exchange integration</td>
+            <td class="ok">Deep — governs exchange params</td>
+            <td class="ok">Deep — BNB Chain</td>
+            <td class="err">No exchange tie</td>
+            <td class="err">No exchange tie</td>
+          </tr>
+          <tr>
+            <td>Chain governance</td>
+            <td class="ok">HTX Chain — EVM chain</td>
+            <td class="ok">BNB Chain — major L1</td>
+            <td class="err">No native chain</td>
+            <td class="err">No native chain</td>
+          </tr>
+          <tr class="hi">
+            <td>Grant programme</td>
+            <td class="ok">Yes — ecosystem grants</td>
+            <td class="ok">Yes — BNB grants</td>
+            <td class="ok">Yes — Uniswap Foundation</td>
+            <td class="ok">Yes — Aave Grants DAO</td>
+          </tr>
+          <tr>
+            <td>Fee revenue to DAO</td>
+            <td class="ok">Yes — exchange fee allocation</td>
+            <td class="ok">Yes — BNB burn + DAO</td>
+            <td class="warn">Pending fee switch vote</td>
+            <td class="ok">Yes — protocol revenue</td>
+          </tr>
+          <tr class="hi">
+            <td>Voting mechanism</td>
+            <td>Staked HTX weight</td>
+            <td>BNB token weight</td>
+            <td>UNI token weight</td>
+            <td>AAVE/stkAAVE weight</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:1rem">
+      <strong>HTX DAO's unique position:</strong> Among exchange-affiliated DAOs,
+      HTX DAO's combination of exchange governance, chain governance (HTX Chain),
+      and ecosystem grants creates one of the most comprehensive DAO mandates in crypto.
+      Unlike pure DeFi protocol DAOs (UNI, AAVE), HTX DAO governs both
+      the on-chain and exchange dimensions of a major crypto ecosystem —
+      making community participation in HTX DAO particularly impactful.
+    </div>
+  </section>
+
+  <!-- BEST PRACTICES -->
+  <section class="card" id="best-practices">
+    <h2>Best Practices for HTX DAO Participants</h2>
+    <ul style="padding-left:1.2rem">
+      <li style="margin-bottom:.6rem"><strong>Stake HTX before the next major proposal</strong> — governance snapshots are typically taken at voting start. Ensure your HTX is staked before the snapshot to have your holdings count. Staking after a vote starts may not include your tokens in that proposal's tally.</li>
+      <li style="margin-bottom:.6rem"><strong>Engage during the discussion period, not just the voting period</strong> — the proposal discussion phase is where HTX DAO decisions are actually shaped. Thoughtful comments during discussion influence proposal refinements before they go to a vote. Governance participation is most effective before the binary For/Against window.</li>
+      <li style="margin-bottom:.6rem"><strong>Review the treasury impact of every proposal before voting</strong> — treasury allocation proposals should always be evaluated on their expected ROI for the ecosystem, not just their stated goals. A well-written proposal with poor budget allocation deserves a "No" vote even if the objective is worthy.</li>
+      <li style="margin-bottom:.6rem"><strong>Delegate your votes if you can't participate actively</strong> — if you hold significant HTX but lack time for active governance, delegate your voting power to a trusted community member who will use it thoughtfully. Vote delegation is a legitimate and encouraged governance tool.</li>
+      <li style="margin-bottom:.6rem"><strong>Submit grant proposals for projects you're building</strong> — if you're developing on HTX Chain or building ecosystem tools, HTX DAO's grant programme is a legitimate funding source. Write a clear proposal with measurable deliverables, reasonable budget, and strong community benefit case.</li>
+      <li><strong>Monitor the buyback-and-burn programme</strong> — HTX's exchange revenue-driven buyback and burn directly affects token economics. Tracking the buyback frequency and amounts provides signal on exchange performance and treasury health beyond what governance portals show.</li>
+    </ul>
+  </section>
+
+  <!-- EEAT -->
+  <section class="eeat" id="eeat" aria-labelledby="eeat-title">
+    <h2 id="eeat-title">HTX DAO: Authoritative References &amp; External Sources</h2>
+
+    <h3>HTX DAO — Official Sources</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://www.htx.com/" target="_blank" rel="noopener nofollow">HTX — Official Exchange &amp; Ecosystem</a></li>
+      <li><a href="https://snapshot.org/" target="_blank" rel="noopener nofollow">Snapshot — Off-chain DAO Governance Voting</a></li>
+    </ul>
+
+    <h3>DAO Governance Infrastructure</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://tally.xyz/" target="_blank" rel="noopener nofollow">Tally — On-chain DAO Governance Dashboard</a></li>
+      <li><a href="https://etherscan.io/" target="_blank" rel="noopener nofollow">Etherscan — HTX Token &amp; DAO Contract Verification</a></li>
+    </ul>
+
+    <h3>DAO Research &amp; Analytics</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://defillama.com/" target="_blank" rel="noopener nofollow">DeFiLlama — HTX Chain TVL &amp; Ecosystem Data</a></li>
+      <li><a href="https://dune.com/browse/dashboards" target="_blank" rel="noopener nofollow">Dune Analytics — HTX DAO On-Chain Dashboards</a></li>
+      <li><a href="https://messari.io/" target="_blank" rel="noopener nofollow">Messari — DAO Governance Research</a></li>
+    </ul>
+
+    <div class="note" style="margin-top:1.3rem">
+      <strong>About:</strong> Prepared by Crypto Finance Experts as a high-quality,
+      SEO-oriented knowledge base targeting the keyword <em>HTX DAO</em> —
+      covering HTX DAO governance, proposals, voting mechanics, treasury management,
+      ecosystem grants, HTX token utility, HTX Chain integration, and comparison
+      with other major exchange and protocol DAOs.
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title" style="margin-top:0;border-top:none;padding-top:0">HTX DAO — Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f1" id="b1">
+        <h3>What is HTX DAO?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f1" class="faq-content" role="region" aria-labelledby="b1">
+        <p>HTX DAO is the decentralised autonomous organisation governing the HTX ecosystem — formerly known as Huobi. HTX DAO gives HTX token holders direct governance power over the ecosystem's direction: voting on protocol parameters, treasury allocation, ecosystem grants, exchange fee structures, HTX Chain governance, and strategic partnerships. Rather than centralised management making all decisions, HTX DAO distributes governance to the community of HTX token holders who stake and participate actively.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f2" id="b2">
+        <h3>How do I participate in HTX DAO governance?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f2" class="faq-content" role="region" aria-labelledby="b2">
+        <p>To participate in HTX DAO: (1) Acquire HTX tokens on HTX Exchange or a supporting DEX; (2) Stake your HTX in the official HTX DAO staking module to activate governance rights — staked HTX earns voting power; (3) Monitor the HTX DAO governance forum and portal for active proposals; (4) Vote on proposals during the voting period using your staked HTX weight; (5) Engage in proposal discussions, submit your own proposals, and contribute to community growth to earn additional DAO participation rewards.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f3" id="b3">
+        <h3>What does the HTX DAO treasury fund?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f3" class="faq-content" role="region" aria-labelledby="b3">
+        <p>The HTX DAO treasury funds four primary categories: ecosystem grants for builders on HTX Chain and the broader ecosystem (typically 30–40% of budget), liquidity incentive programmes for DeFi protocols on HTX Chain (25–35%), community growth initiatives including ambassador programmes, hackathons, and education (15–20%), and DAO operational costs such as audits and infrastructure (10–15%). A strategic reserve is maintained for emergency use or large strategic opportunities. All major allocations require HTX DAO community votes.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f4" id="b4">
+        <h3>What is the relationship between HTX DAO and HTX Chain?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f4" class="faq-content" role="region" aria-labelledby="b4">
+        <p>HTX Chain is the EVM-compatible blockchain launched as the technical foundation of the HTX ecosystem, and HTX DAO is its governance layer. On-chain parameter changes — validator set updates, gas fee structures, native DeFi protocol parameters — are executed on HTX Chain following successful DAO votes. HTX DAO also funds the HTX Chain ecosystem through grants and liquidity incentives. This makes HTX DAO one of the few DAOs that simultaneously governs both an exchange and a dedicated blockchain — a broader mandate than most DeFi protocol DAOs.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f5" id="b5">
+        <h3>How can I apply for an HTX DAO ecosystem grant?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f5" class="faq-content" role="region" aria-labelledby="b5">
+        <p>To apply for an HTX DAO grant: post your project idea in the HTX DAO governance forum to gather community feedback; refine the proposal based on community input; submit a formal grant proposal including project description, team background, specific deliverables with milestones, requested amount with budget breakdown, timeline, and measurable success metrics; the proposal enters a community discussion period followed by a formal DAO vote; if passed, funding is released in tranches tied to milestone delivery rather than as a single upfront payment.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f6" id="b6">
+        <h3>What voting power does my HTX give me in HTX DAO?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f6" class="faq-content" role="region" aria-labelledby="b6">
+        <p>Voting power in HTX DAO is proportional to your staked HTX balance — more staked HTX equals more voting power. Some HTX DAO implementations offer time-weighted staking multipliers where longer staking commitments earn greater voting weight per HTX token. This design rewards long-term committed community members over casual holders. Voting power is typically calculated at a snapshot time when a proposal is submitted — ensure your HTX is staked before this snapshot to have your holdings count toward a specific vote.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f7" id="b7">
+        <h3>How is HTX DAO different from the old Huobi governance?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f7" class="faq-content" role="region" aria-labelledby="b7">
+        <p>Huobi's governance was entirely centralised — all decisions were made by the company and its leadership. HTX DAO represents a fundamental shift: decisions on protocol parameters, treasury deployment, and ecosystem direction now require community governance votes. HTX token holders — not the company alone — determine the ecosystem's direction. This transition also accompanied the rebrand from Huobi to HTX and the establishment of HTX Chain as community-governed infrastructure. HTX DAO's governance model is more transparent and community-accountable than traditional centralised exchange governance.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f8" id="b8">
+        <h3>Does HTX DAO have a buyback and burn programme?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f8" class="faq-content" role="region" aria-labelledby="b8">
+        <p>Yes — a portion of HTX Exchange trading fee revenue is directed toward buying back HTX tokens from the open market and burning them, reducing the circulating supply. This buyback-and-burn mechanism creates deflationary pressure tied directly to exchange trading volume — aligning HTX's token economics with the exchange's commercial success. The frequency and amounts of buybacks are governed by HTX DAO policy and disclosed through official HTX announcements. Monitoring buyback activity provides signal on exchange performance and treasury health.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f9" id="b9">
+        <h3>What rewards do active HTX DAO participants earn?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f9" class="faq-content" role="region" aria-labelledby="b9">
+        <p>HTX DAO's participation incentive programme distributes rewards from the DAO treasury to active community members. Reward activities typically include: casting votes on governance proposals, submitting proposals that reach the voting stage, contributing to community discussions and educational content, participating in ecosystem growth initiatives (hackathons, ambassador programmes), and maintaining active staking positions. The specific reward rates and distribution schedule are governed by the DAO and updated periodically — check the official HTX DAO portal for current reward parameters.</p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="container" role="contentinfo" style="padding:2.5rem 0; border-top:1px solid var(--line); margin-top:2rem">
+  <p style="color:var(--dim); font-size:.93rem">© 2026 HTX DAO Guide. Educational content about HTX DAO governance, HTX token, and the HTX ecosystem. Not financial advice.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-button').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const c = document.getElementById(b.getAttribute('aria-controls'));
+        c.classList.remove('open'); c.style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        content.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+</body>
+</html>
